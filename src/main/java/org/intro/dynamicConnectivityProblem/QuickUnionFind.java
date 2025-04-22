@@ -1,10 +1,15 @@
 package org.intro.dynamicConnectivityProblem;
 
-public class QuickFind {
+/**
+ * Quick union find class is used to perform 2 operations
+ * - union - to connect two objects
+ * - connected - to query if two objects are connected
+ */
+public class QuickUnionFind {
 
     private final int[] id;
 
-    public QuickFind(int n) {
+    public QuickUnionFind(int n) {
         id = new int[n];
         for (int i = 0; i < n; i++) {
             id[i] = i;

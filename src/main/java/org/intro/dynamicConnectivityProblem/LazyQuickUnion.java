@@ -4,18 +4,18 @@ public class LazyQuickUnion {
 
     private final int[] id;
 
-    public LazyQuickUnion(int n) {
-        id = new int[n];
-        for (int i = 0; i < n; i++) {
+    public LazyQuickUnion(int N) {
+        id = new int[N];
+        for (int i = 0; i < N; i++) {
             id[i] = i;
         }
     }
 
-    public int root(int i) {
-        while (i != id[i]) {
-            i = id[i];
+    private int root(int a) {
+        while (id[a] != a) {
+            a = id[a];
         }
-        return i;
+        return a;
     }
 
     public boolean connected(int p, int q) {
@@ -23,8 +23,9 @@ public class LazyQuickUnion {
     }
 
     public void union(int p, int q) {
-        int pid = root(p);
-        int qid = root(q);
-        id[pid] = qid;
+        int rootP = root(p);
+        int rootQ = root(q);
+
+        id[rootP] = rootQ;
     }
 }
