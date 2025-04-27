@@ -1,4 +1,4 @@
-package org.intro.dataStructure;
+package org.intro.dataStructure.stacks;
 
 import org.junit.Test;
 

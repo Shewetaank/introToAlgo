@@ -1,5 +1,6 @@
 package org.intro.dataStructure;
 
+import org.intro.dataStructure.queue.LinkedListStringQueue;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;

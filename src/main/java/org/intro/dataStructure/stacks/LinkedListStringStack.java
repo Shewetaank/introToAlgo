@@ -1,6 +1,6 @@
-package org.intro.dataStructure;
+package org.intro.dataStructure.stacks;
 
-public class LinkedListStringStack {
+public class LinkedListStringStack implements Stack<String> {
 
     private Node first = null;
 
@@ -28,5 +28,4 @@ public class LinkedListStringStack {
         first = first.next;
         return item.value;
     }
-
 }

@@ -1,11 +1,12 @@
-package org.intro.dataStructure;
+package org.intro.dataStructure.queue;
 
-public class LinkedListStringQueue {
+public class LinkedListStringQueue implements Queue<String> {
 
     private Node first, last;
+    private int size = 0;
 
     private static class Node {
-        String item;
+        String value;
         Node next;
     }
 
@@ -13,32 +14,42 @@ public class LinkedListStringQueue {
         return first == null;
     }
 
+    @Override
+    public int size() {
+        return size;
+    }
+
     public String dequeue() {
+        if (isEmpty()) {
+            return null;
+        }
         var oldFirst = first;
         first = first.next;
         if (isEmpty()) {
             last = null;
         }
-        return oldFirst.item;
+        size--;
+        return oldFirst.value;
     }
 
     public void enqueue(String value) {
-        Node oldLast = last;
+        var oldLast = last;
         last = new Node();
-        last.item = value;
+        last.value = value;
         last.next = null;
         if (isEmpty()) {
             first = last;
         } else {
             oldLast.next = last;
         }
+        size++;
     }
 
     public String head() {
-        return first.item;
+        return first.value;
     }
 
     public String tail() {
-        return last.item;
+        return last.value;
     }
 }
