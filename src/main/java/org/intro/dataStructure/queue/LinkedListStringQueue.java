@@ -23,7 +23,7 @@ public class LinkedListStringQueue implements Queue<String> {
         if (isEmpty()) {
             return null;
         }
-        var oldFirst = first;
+        Node oldFirst = first;
         first = first.next;
         if (isEmpty()) {
             last = null;
@@ -33,7 +33,7 @@ public class LinkedListStringQueue implements Queue<String> {
     }
 
     public void enqueue(String value) {
-        var oldLast = last;
+        Node oldLast = last;
         last = new Node();
         last.value = value;
         last.next = null;

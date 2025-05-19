@@ -2,10 +2,6 @@ package org.intro.praticeQuestions.sorting;
 
 import static org.intro.praticeQuestions.shuffling.KnuthShuffling.shuffle;
 
-/**
- * Properties of quick sort-
- * 1. Quick sort is not stable.
- */
 public class QuickSort extends AbstractSort {
 
     public static void sort(Comparable[] a) {
@@ -14,13 +10,9 @@ public class QuickSort extends AbstractSort {
     }
 
     private static void sort(Comparable[] a, int lo, int hi) {
-        /**
-         * For smaller sub-arrays quick sort can take more time, so better to use insertion sort
-         * when the sub-array is < 20.
-         */
-        int CUTOFF = 1;
+        int CUTOFF = 3;
         if (hi <= lo + CUTOFF - 1) {
-            //InsertionSort.sort(a);
+            InsertionSort.sort(a, lo, hi);
             return;
         }
         int j = partition(a, lo, hi);
@@ -28,7 +20,7 @@ public class QuickSort extends AbstractSort {
         sort(a, j + 1, hi);
     }
 
-    private static int partition(Comparable[] a, int lo, int hi) {
+    static int partition(Comparable[] a, int lo, int hi) {
         int i = lo, j = hi + 1;
         while (true) {
             while (less(a[++i], a[lo])) {
@@ -41,7 +33,6 @@ public class QuickSort extends AbstractSort {
                     break;
                 }
             }
-
             if (i >= j) {
                 break;
             }

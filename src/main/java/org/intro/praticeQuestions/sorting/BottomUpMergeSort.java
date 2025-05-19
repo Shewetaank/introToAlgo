@@ -5,9 +5,10 @@ public class BottomUpMergeSort extends AbstractSort {
     public static void sort(Comparable[] a) {
         Comparable[] aux = new Comparable[a.length];
         int N = a.length;
-        for (int sz = 1; sz < N; sz = sz+sz) {
-            for (int lo = 0; lo < N - sz; lo += sz+sz) {
-                merge(a, aux, lo, lo + sz - 1, Math.min(lo+sz+sz-1, N-1));
+
+        for (int sz = 1; sz < N; sz = sz + sz) {
+            for (int lo = 0; lo < N - sz; lo += sz + sz) {
+                merge(a, aux, lo, lo + sz - 1, Math.min(lo + sz + sz - 1, N - 1));
             }
         }
     }
@@ -34,14 +35,5 @@ public class BottomUpMergeSort extends AbstractSort {
         }
 
         assert isSorted(a, lo, hi);
-    }
-
-    private static boolean isSorted(Comparable[] a, int lo, int hi) {
-        for (int k = lo; k < hi; k++) {
-            if (less(a[k + 1], a[k])) {
-                return false;
-            }
-        }
-        return true;
     }
 }

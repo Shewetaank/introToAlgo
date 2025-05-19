@@ -20,8 +20,7 @@ public class MergeSortTest {
         }
 
         MergeSort mergeSort = new MergeSort();
-        Comparable[] aux = new Comparable[array.length];
-        mergeSort.sort(array, aux, 0, array.length - 1);
+        mergeSort.sort(array, 0, array.length - 1);
         for (Comparable comparable : array) {
             System.out.print(comparable + " ");
         }

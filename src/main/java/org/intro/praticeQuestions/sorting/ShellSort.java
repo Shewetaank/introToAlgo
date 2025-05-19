@@ -15,14 +15,14 @@ public class ShellSort {
         while (h >= 1) {
             for (int i = h; i < N; i++) {
                 for (int j = i; j >= h; j = j - h) {
-                    if (less(items[j], items[j-h])) {
+                    if (less(items[j], items[j - h])) {
                         exch(items, j, j - h);
                     } else {
                         break;
                     }
                 }
+                h = h/3;
             }
-            h = h/3;
         }
     }
 }

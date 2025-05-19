@@ -4,14 +4,20 @@ public class MergeSort extends AbstractSort {
 
     private static final int CUTOFF = 4;
 
-    public void sort(Comparable[] a, Comparable[] aux, int lo, int hi) {
-        if (hi <= lo) {
+    public void sort(Comparable[] a, int lo, int hi) {
+        Comparable[] aux = new Comparable[a.length];
+        sort(a, aux, lo, hi);
+    }
+
+    private void sort(Comparable[] a, Comparable[] aux, int lo, int hi) {
+        if (hi <= lo + CUTOFF - 1) {
+            InsertionSort.sort(a, lo, hi);
             return;
         }
 
         int mid = (hi - lo)/2 + lo;
         sort(a, aux, lo, mid);
-        sort(a, aux, mid+1, hi);
+        sort(a, aux, mid + 1, hi);
 
         if (!less(a[mid+1], a[mid])) {
             return;
@@ -22,18 +28,18 @@ public class MergeSort extends AbstractSort {
 
     public void merge(Comparable[] a, Comparable[] aux, int lo, int mid, int hi) {
         assert isSorted(a, lo, mid);
-        assert isSorted(a, mid+1, hi);
+        assert isSorted(a, mid + 1, hi);
 
         for (int i = lo; i <= hi; i++) {
             aux[i] = a[i];
         }
 
-        int i = lo, j = mid+1;
+        int i = lo, j = mid + 1;
         for (int k = lo; k <= hi; k++) {
-            if (j > hi) {
-                a[k] = aux[i++];
-            } else if (i > mid) {
+            if (i > mid) {
                 a[k] = aux[j++];
+            } else if (j > hi) {
+                a[k] = aux[i++];
             } else if (less(aux[i], aux[j])) {
                 a[k] = aux[i++];
             } else {
@@ -43,14 +49,4 @@ public class MergeSort extends AbstractSort {
 
         assert isSorted(a, lo, hi);
     }
-
-    private boolean isSorted(Comparable[] a, int lo, int hi) {
-        for (int i = lo; i < hi; i++) {
-            if (less(a[i+1], a[i])) {
-                return false;
-            }
-        }
-        return true;
-    }
-
 }

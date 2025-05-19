@@ -61,9 +61,11 @@ public class WeightedQuickUnion {
     public void union(int p, int q) {
         int pid = root(p);
         int qid = root(q);
+
         if (pid == qid) {
             return;
         }
+
         if (sz[pid] < sz[qid]) {
             id[pid] = qid;
             sz[qid] += sz[pid];

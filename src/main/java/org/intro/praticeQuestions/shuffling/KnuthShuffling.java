@@ -11,7 +11,7 @@ public class KnuthShuffling {
     public static void shuffle(Comparable[] items) {
         var random = new Random();
         for (int i = 1; i < items.length; i++) {
-            int r = random.nextInt(0, i+1);
+            int r = random.nextInt(0, i);
             swap(items, i, r);
         }
     }

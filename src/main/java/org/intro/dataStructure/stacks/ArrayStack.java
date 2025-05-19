@@ -1,5 +1,7 @@
 package org.intro.dataStructure.stacks;
 
+import java.util.Iterator;
+
 public class ArrayStack<T> implements Stack<T> {
 
     private T[] stack;
@@ -38,5 +40,24 @@ public class ArrayStack<T> implements Stack<T> {
             temp[i] = stack[i];
         }
         stack = temp;
+    }
+
+    @Override
+    public Iterator<T> iterator() {
+        return new ArrayStackIterator();
+    }
+
+    private class ArrayStackIterator implements Iterator<T> {
+        int i = N;
+
+        @Override
+        public boolean hasNext() {
+            return i > 0;
+        }
+
+        @Override
+        public T next() {
+            return stack[--i];
+        }
     }
 }

@@ -27,6 +27,9 @@ public class ArrayStringQueue implements Queue<String> {
         if (first < last) {
             first = first + 1;
         }
+        if (last - first + 1 == queue.length/4) {
+            resize(queue.length/2);
+        }
         return oldFirst;
     }
 

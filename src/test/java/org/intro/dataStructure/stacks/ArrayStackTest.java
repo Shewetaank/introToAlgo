@@ -16,4 +16,15 @@ public class ArrayStackTest {
         stk.push("four");
         Assert.assertEquals(stk.pop(), "four");
     }
+
+    @Test
+    public void testIterator() {
+        ArrayStack<String> stk = new ArrayStack<>();
+        stk.push("one");
+        stk.push("two");
+        stk.push("three");
+        for (String s : stk) {
+            System.out.println(s);
+        }
+    }
 }
